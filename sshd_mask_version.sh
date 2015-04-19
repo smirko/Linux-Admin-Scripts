@@ -124,11 +124,8 @@ then
 	# Uncomment only if you know what you're doing
 	# THIS IS GOING TO REPLACE YOUR ORIGINAL BINARY
 	# IF SSH IS YOUR ONLY WAY OF ACCESSING THIS SYSTEM, YOU MIGHT LOCK YOURSELF OUT IF THE PROCEDURE DID NOT WORK AS PLANNED
-	#if [ ${fullauto} -eq 0 ]
-	#then
-	#	scp /tmp/sshd.new $(which sshd)
-	#	echo "You need to restart your ssh server now for the changes to take effect."
-	#fi
+	#scp /tmp/sshd.new $(which sshd)
+	#echo "You need to restart your ssh server now for the changes to take effect."
 else
 	echo "ERROR! Something went wrong, your binary is not listening as it should, try again"
 fi
