@@ -126,14 +126,14 @@ on() {
 						fi
 					else
 						cnts[${ints[$i]}]=0
-						[ "${intcnt}" -eq "${#ints[*]}" ] && sleep 120
 						let intcnt++
-						intcnt=0
+						[ "${intcnt}" -eq "${#ints[*]}" ] && sleep 120
 					fi				
 				fi
 			done
 		done
 		sleep 0.5
+		intcnt=0
 	done &
 }
 
