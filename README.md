@@ -18,6 +18,16 @@ OpenSSH server and some system privileges to place the reworked binary back into
 
 So far tested under Fedora and Debian.
 
+# keepalive_ints.sh
+Script to watch for remote host availability that:
+	- restarts interfaces specified
+	- reloads their kernel modules
+	- reboots the device if none of the above helps
+
+WARNING! You should know what you're doing, as remote WAN hosts tend 
+		 to become unavailable for reasons other than local interface issues.
+		 It's probably best to point your probes at hosts directly connected
+		 to the same infrastructure as the host you run this script on
+
 Cheers
 Smirk
-

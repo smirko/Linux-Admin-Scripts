@@ -14,7 +14,7 @@
 #
 #   Created by - Maciej 'Smirk' Blachnio 2015.07
 #
-#     This program is under GPL [http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt]
+#	This program is under GPL [http://www.gnu.org/licenses/gpl.html]
 #
 #   Modify the following to match your configuration
 #	Arrays: tests, ints, mods, cnts
