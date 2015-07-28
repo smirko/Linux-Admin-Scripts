@@ -33,10 +33,8 @@ do
 	let cnt++
 	sleep 1
 done
-echo test1
 # Check if you finally have a default router (you usually need one when working on the net :) )
 [ -z "$(ip ro|grep default)" ] && ( logger "Default router not found. Check your network configuration"; exit 1 )
-echo test2
 
 # Determine if the folder name set in the variable above is correct
 [ ! -d "${dirname}" ] && ( logger "${machine} image cannot be located. Check for the existence of ${dirname}"; exit 1 )
