@@ -114,13 +114,13 @@ on() {
 								fi
 							done
 							ifup ${ints[$i]}
-							echo "$(date +"%F %T") - ${cnts[${ints[$i]}]}=${max} - reloaded modules and restarted interface ${ints[$i]}" >> ${hf}
+							echo "$(date +"%F %T") - ${max} interface restarts reached - reloaded modules and restarted interface ${ints[$i]}" >> ${hf}
 						fi
 						
 						# Check the counter to see if we hit the module reload maximum
 						if [ ${cnts[${ints[$i]}]} -eq ${reboot} ] 
 						then
-							echo "$(date +"%F %T") - ${cnts[${ints[$i]}]}=${reboot} - ${ints[$i]} unuseable - commencing device reboot" >> ${hf}
+							echo "$(date +"%F %T") - ${reboot} interface restarts reached - ${ints[$i]} unuseable - commencing device reboot" >> ${hf}
 							cnts[${ints[$i]}]=0
 							reboot
 						fi
