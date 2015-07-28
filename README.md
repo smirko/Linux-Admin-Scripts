@@ -1,7 +1,7 @@
 # sshd_mask_version.sh
 A script that simplified my everyday work as a Linux administrator
 
-Ever wanted to hide your SSH server version from the emblem when somebody connects to it?
+Hide your SSH server version from the emblem when somebody connects to it
 
 I've recently noticed a lot of sshd version gathering traffic coming from the internet
 and wanted to make this task a little harderi for the bots and their masters.
@@ -30,8 +30,14 @@ WARNING! You should know what you're doing, as remote WAN hosts tend
 		 to the same infrastructure as the host you run this script on
 
 # start_virtual.sh
-Ever wanted to autostart a Qemu VM, but it kept throwing lots of errors and died? 
-Well. I did. So I wrote this little workaround script that solves some of the problems I faced.
+Autostarting a Qemu VM kept throwing lots of errors and died afterwards.
+I wrote this little workaround script that solves (kinda ;) ) some of the problems I faced.
+
+# toggle_pa_audio_source.sh
+I needed to quickly switch between my USB headphones set and the internal audio.
+Feed this script with some device names and you can use it to easily toggle with just one click
+(you also need to create some kind of a GUI launcher in your favourite X environment).
+
 
 Cheers
 Smirk
