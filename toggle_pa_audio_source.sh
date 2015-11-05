@@ -6,6 +6,7 @@
 #      You'll need pacmd supplied by pulseaudio-utils
 #
 #   Created by - Maciej 'Smirk' Blachnio 2015.07
+#   Updated - Maciej 'Smirk' Blachnio 2015.11
 #
 #      This program is under GPL [http://www.gnu.org/licenses/gpl.html]
 #
@@ -37,23 +38,36 @@ do
 	cards[${ind}]=$(pacmd list-cards|sed '/index: '${ind}'/,/active profile: /!d;/alsa.card_name = /!d;s/^.*alsa.card_name = "//g;s/"//')
 done
 
+en1=-1
+en2=-1
+
 for ind in ${!cards[*]}
 do
 	prof="$(pacmd list-cards|sed '/index: '${ind}'/,/active profile:/!d;/active profile:/!d;s/^.*active profile: <//;s/>$//')"
 	if [ "${cards[${ind}]}" == "${card1}" ]
 	then
+		c1=${ind}
 		if [ "${prof}" == "off" ]
 		then
-			pacmd set-card-profile ${ind} ${cprof1}
-		else
-			pacmd set-card-profile ${ind} off; echo "${card1} set to off"
+			en1=1
 		fi
-	else
-                if [ "${prof}" == "off" ]
-                then
-                        pacmd set-card-profile ${ind} ${cprof2}
-                else
-                        pacmd set-card-profile ${ind} off; echo "${card2} set to off"
-                fi
+	fi
+	if [ "${cards[${ind}]}" == "${card2}" ]
+	then
+		c2=${ind}
+		if [ "${prof}" == "off" ]
+		then
+			en2=1
+		fi
 	fi
 done
+
+if [ ${en1} -ne -1 ]
+then
+        pacmd set-card-profile ${c1} ${cprof1}
+        pacmd set-card-profile ${c2} off; echo "${card2} set to off"	
+else
+	pacmd set-card-profile ${c2} ${cprof2}
+        pacmd set-card-profile ${c1} off; echo "${card1} set to off"
+fi
+
