@@ -88,7 +88,7 @@ then
 	echo "Creating second part from the user-provided string"
 	echo "Please type a string of length ${dl} (zeroes mark tens)"
 	echo "1#######10########20########30########40"
-	read emblem
+	read -n${dl} emblem
 else
 	cnt=0
 	echo "Creating second part with default masking string"
@@ -99,7 +99,7 @@ else
 	done
 fi
 echo -n "${emblem}" > sshd.2
-
+echo
 echo "Creating the last part"
 dd if=./sshd bs=1 skip=$[ ${dl} + ${start} ] count=999999999 of=sshd.3 &>/dev/null
 
@@ -124,8 +124,11 @@ then
 	# Uncomment only if you know what you're doing
 	# THIS IS GOING TO REPLACE YOUR ORIGINAL BINARY
 	# IF SSH IS YOUR ONLY WAY OF ACCESSING THIS SYSTEM, YOU MIGHT LOCK YOURSELF OUT IF THE PROCEDURE DID NOT WORK AS PLANNED
-	#scp /tmp/sshd.new $(which sshd)
-	#echo "You need to restart your ssh server now for the changes to take effect."
+	#if [ ${fullauto} -eq 0 ]
+	#then
+	#	scp /tmp/sshd.new $(which sshd)
+	#	echo "You need to restart your ssh server now for the changes to take effect."
+	#fi
 else
 	echo "ERROR! Something went wrong, your binary is not listening as it should, try again"
 fi
